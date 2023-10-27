@@ -33,16 +33,11 @@ root = Tk()
 root.geometry("750x360")
 root.title("Get file path")
 
-nameVar = StringVar()
+#File uploader button 
+def Uploadevent(event=none):
+    filename = filedialog.askopenfilename
 
-entryWidget = ctk.CTkEntry(root)
-entryWidget.pack(side=TOP, padx=5, pady=5)
 
-pathLabel = ctk.CTkLabel(root, text="Drag and drop file in the entry box")
-pathLabel.pack(side=TOP, padx=5, pady=5)
-
-entryWidget.drop_target_register(DND_ALL)
-entryWidget.dnd_bind("<<Drop>>", get_path)
 
 # Button to trigger PDF processing
 button = ctk.CTkButton(root, text="Read my PDF", command=lambda: extract_and_display_dates(pathLabel("text")))
