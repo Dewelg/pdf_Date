@@ -11,8 +11,9 @@ class Tk(ctk.CTk, TkinterDnD.DnDWrapper):
 
 ctk.set_appearance_mode("dark")
 
-def get_path(event):
-    pathLabel.configure(text=event.data)
+def Upload_action():
+    filename = filedialog.askopenfilename()
+    print ('Selceted', filename)
 
 def extract_and_display_dates(pdf_path, re):
     dates = []
@@ -33,14 +34,11 @@ root = Tk()
 root.geometry("750x360")
 root.title("Get file path")
 
-#File uploader button 
-def Uploadevent(event=none):
-    filename = filedialog.askopenfilename
-
-
-
-# Button to trigger PDF processing
-button = ctk.CTkButton(root, text="Read my PDF", command=lambda: extract_and_display_dates(pathLabel("text")))
+# Button to upload pdf
+button = ctk.CTkButton(root, text="Upload PDF", command=Upload_action)
 button.pack(side=tk.TOP, padx=5, pady=5)
 
+#File pdf processor
+File_pro = ctk.CTkButton(root, text="ReadPdf", command=extract_and_display_dates)
+File_pro.pack(side=tk.TOP, padx=5, pady=5)
 root.mainloop()
