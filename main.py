@@ -4,11 +4,6 @@ from PyPDF2 import PdfFileReader
 import customtkinter as ctk
 from customtkinter import filedialog
 
-class Tk(ctk.CTk, TkinterDnD.DnDWrapper):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.TkdndVersion = TkinterDnD._require(self)
-
 ctk.set_appearance_mode("dark")
 
 def Upload_action():
@@ -31,7 +26,7 @@ def extract_and_display_dates(pdf_path, re):
 
 #Size and Name on interface
 root = Tk()
-root.geometry("750x360")
+root = ctk.CTkFrame("750x360")
 root.title("Get file path")
 
 # Button to upload pdf
@@ -40,5 +35,5 @@ button.pack(side=tk.TOP, padx=5, pady=5)
 
 #File pdf processor
 File_pro = ctk.CTkButton(root, text="ReadPdf", command=extract_and_display_dates)
-File_pro.pack(side=tk.TOP, padx=5, pady=5)
+File_pro.pack()
 root.mainloop()
